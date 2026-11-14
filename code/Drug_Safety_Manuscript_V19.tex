@@ -1,0 +1,805 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{changepage}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{textcomp,marvosym}
+\usepackage{cite}
+\usepackage{nameref,hyperref}
+\usepackage[right]{lineno}
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = * }
+\usepackage[table]{xcolor}
+\usepackage{array}
+
+\newcolumntype{+}{!{\vrule width 2pt}}
+\newlength\savedwidth
+\newcommand\thickcline[1]{%
+  \noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+  \cline{#1}%
+  \noalign{\vskip\arrayrulewidth}%
+  \noalign{\global\arrayrulewidth\savedwidth}%
+}
+\newcommand\thickhline{\noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+\hline
+\noalign{\global\arrayrulewidth\savedwidth}}
+
+\usepackage{setspace}
+\doublespacing
+
+\raggedright
+\setlength{\parindent}{0.5cm}
+
+\usepackage[aboveskip=1pt,labelfont=bf,labelsep=space,justification=raggedright,singlelinecheck=off]{caption}
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.}
+% Bibliography style: Vancouver (numbered)
+
+
+
+\usepackage{lastpage,fancyhdr,graphicx}
+\usepackage{epstopdf}
+\pagestyle{plain}
+
+\usepackage{xurl}
+\graphicspath{{./}}
+\usepackage{float,placeins}
+\usepackage[capitalize,nameinlink]{cleveref}
+\crefname{figure}{Fig.}{Figs.}
+\Crefname{figure}{Fig.}{Figs.}
+\crefname{table}{Table}{Tables}
+\usepackage{enumitem}
+\usepackage{xspace}
+\usepackage{pifont}
+\usepackage{booktabs,tabularx,multirow,makecell,longtable}
+\renewcommand{\tabularxcolumn}[1]{p{#1}}
+\renewcommand{\arraystretch}{1.0}
+
+\newcommand{\FAERS}{\textsf{FAERS}\xspace}
+\newcommand{\etal}{et al.\xspace}
+
+\begin{document}
+
+\linenumbers
+\thispagestyle{plain}
+
+\begin{center}
+{\Large\bfseries Adverse drug reaction signals for GLP-1 receptor agonists, SGLT2 inhibitors, insulins, and cardiometabolic agents in adolescents with obesity and type~2 diabetes: a four-metric disproportionality analysis of the FDA Adverse Event Reporting System (2021--2025)\par}
+\vspace{12pt}
+
+{\normalsize\textbf{Running heading:} Adolescent ADR signals: GLP-1, SGLT2 inhibitors and insulins via FAERS\par}
+\vspace{10pt}
+
+{\normalsize
+Atherv Telkar\textsuperscript{1,\dag,*}\,,
+Amey Telkar\textsuperscript{1,\dag,*}\,,
+Akshay Javalgikar\textsuperscript{2}\,,
+Nitin Madanwale~\textsuperscript{\href{https://orcid.org/0009-0007-9693-8501}{[ORCID]}}\textsuperscript{2}\,,
+Darshan Ruikar\textsuperscript{1}\,,
+Preethi Baligar\textsuperscript{1}\par}
+\vspace{8pt}
+
+{\small
+\textsuperscript{1}\,School of Computing, Maharashtra Institute of Technology
+(MIT) Vishwaprayag University, Solapur, Maharashtra, India\\
+\textsuperscript{2}\,School of Pharmacy, Maharashtra Institute of Technology
+(MIT) Vishwaprayag University, Solapur, Maharashtra, India\par}
+\vspace{6pt}
+
+{\small
+\textbf{Word Count:} 5,340 words (main body) with 4 figures and 5 tables\\
+\textbf{Article submitted to:} Drug Safety\\
+\textbf{Version:} 1\par}
+\vspace{6pt}
+{\footnotesize
+\textsuperscript{\dag}\,These authors contributed equally to this work.\\
+*\,Corresponding author:\\
+Atherv Telkar, School of Computing, Maharashtra Institute of Technology (MIT) Vishwaprayag University, Solapur, Maharashtra 413255, India. Tel: +91-8788762307, E-mail: athervtelkar08@gmail.com\\
+ORCID: \url{https://orcid.org/0009-0008-6422-7614}\par}
+%% NOTE: Drug Safety requires a single corresponding author. Amey Telkar's contact
+%% details are retained below as a comment; add as second corresponding author only
+%% if the journal permits it.
+%% Amey Telkar, Tel: +91-9817642475, E-mail: ameytelkar08@gmail.com, ORCID: https://orcid.org/0009-0000-5133-6012
+\end{center}
+\vspace{10pt}
+
+%% ---- title-page acknowledgement (Springer: separate section on the title page) ----
+\section*{Acknowledgments}
+The authors thank Maharashtra Institute of Technology (MIT) Vishwaprayag University, Solapur, for institutional support, and the U.S. Food and Drug Administration for making the FAERS data publicly available.
+
+%% ---- ABSTRACT ----
+\section*{Abstract}
+
+\subsection*{Introduction}
+Adolescent obesity and type~2 diabetes have risen sharply, driving increased prescribing of cardiometabolic medications---including anti-diabetic agents, lipid-lowering drugs and antihypertensives---in patients aged 12--17 years, many prescribed off-label with limited post-marketing safety data.
+
+\subsection*{Objective}
+To analyse adverse events (AEs) reported for medications commonly prescribed to adolescents with obesity and type~2 diabetes in the US Food and Drug Administration Adverse Event Reporting System (FAERS).
+
+\subsection*{Methods}
+In this disproportionality analysis of individual case safety reports, AE reports for adolescents aged 12-17 years were extracted from the publicly available FAERS quarterly data files (first quarter of 2021 to fourth quarter of 2025). Fourteen obesity-related and 10 diabetes-related medications were included, spanning GLP-1 receptor agonists, SGLT2 inhibitors, biguanides, statins, antihypertensives and insulin preparations. AEs were classified using the Medical Dictionary for Regulatory Activities (version~28.1) at the Preferred Term level. Signal detection used four disproportionality measures (reporting odds ratio, proportional reporting ratio, information component and empirical Bayes geometric mean), complemented by a gradient-boosted tree classifier for case-level outcome triage. No case-by-case causality assessment was performed.
+
+\subsection*{Results}
+From 8,598,529 raw FAERS records, 7,349,591 were retained after case-level deduplication. Of these, 3,189,002 were excluded because no valid age was recorded; cases with imputed or missing ages were not included. The final adolescent cohort comprised 122,552 reports from patients with a confirmed age of 12 to under 18 years (mean age 14.69 years, SD 1.67). Applying the stated criteria ($N \geq 3$, primary and secondary suspect drug roles, and lower bound of the 95\% confidence interval [CI] $>1$), 231 drug-event pairs met the reporting odds ratio (ROR) signal threshold in the broad obesity-related panel (PS/SS primary analysis), all of which also satisfied all four algorithmic criteria simultaneously. Key signals included insulin aspart--diabetic ketoacidosis (ROR\,=\,630.87, 95\%\,CI 439.57--905.42, $N=63$), lisinopril--completed suicide (ROR\,=\,35.31, 95\%\,CI 22.44--55.55, $N=23$), lisinopril--angioedema (ROR\,=\,33.79, $N=14$), and semaglutide--pancreatitis (ROR\,=\,23.32, $N=5$). The gradient-boosted tree classifier (XGBoost) achieved a temporal macro-averaged F1 score (Macro-F1) of 0.389 on the obesity-related panel, significantly outperforming learned baselines (McNemar's $p<0.001$); a random-split Macro-F1 of 0.629 is reported for comparison only, as that pipeline fitted preprocessing before splitting. A Preferred Term lookup heuristic exceeded XGBoost (Macro-F1 0.594), reflecting partial label derivation from adverse-event terms.
+
+\subsection*{Conclusions}
+This combined disproportionality and machine-learning assessment of medications commonly prescribed to adolescents with obesity and type~2 diabetes, restricted to cases with confirmed ages and primary/secondary suspect drug roles, identifies 231 four-metric concordant signals in the broad obesity-related panel and 151 in the broad diabetes-related panel. The findings may inform clinical practice and regulatory monitoring for this vulnerable population. Disproportionality analysis is hypothesis-generating: these findings do not establish causality or incidence and require confirmation.
+
+\vspace{8pt}
+\noindent\textbf{Keywords:} Pharmacovigilance; Adolescents; FAERS; Disproportionality analysis; Adverse drug reactions; Cardiometabolic medications; GLP-1 receptor agonists; SGLT2 inhibitors; Machine learning; Signal detection.
+
+\vspace{6pt}
+\noindent\textbf{Abbreviations:} AE: adverse event; AOM: anti-obesity medication; CI: confidence interval; EBGM: Empirical Bayesian Geometric Mean; EB05: lower 5\% limit of EBGM; FAERS: FDA Adverse Event Reporting System; GLP-1: glucagon-like peptide-1; IC: Information Component; IC$_{025}$: lower 95\% confidence bound of IC; ISR: Individual Safety Report; MedDRA: Medical Dictionary for Regulatory Activities; ML: machine learning; PRR: Proportional Reporting Ratio; PT: Preferred Term; ROR: Reporting Odds Ratio; SGLT2: sodium-glucose cotransporter-2; SHAP: SHapley Additive exPlanations; SMQ: Standardised MedDRA Query; SOC: System Organ Class; T2D: type~2 diabetes; WHO: World Health Organization; XGBoost: eXtreme Gradient Boosting.
+
+
+%% ---- KEY POINTS (Drug Safety requirement) ----
+\section*{Key Points}
+\begin{itemize}
+\item Among 122,552 adolescent reports with confirmed ages in the FDA FAERS database (2021--2025), restricted to primary and secondary suspect drug roles, disproportionality analysis of medications commonly prescribed to adolescents with obesity and type~2 diabetes identified 231 ROR-positive drug--event signals in the broad obesity-related panel, all 231 also meeting all four signal detection criteria (ROR, PRR, IC, EBGM) simultaneously.
+\item Notable signals warranting further investigation include insulin aspart--diabetic ketoacidosis (ROR\,=\,630.87, $N=63$), dapagliflozin--cardiac contractility decreased (ROR\,=\,9{,}425.62, $N=3$), lisinopril--completed suicide (ROR\,=\,35.31, $N=23$) and semaglutide--pancreatitis (ROR\,=\,23.32, $N=5$), underscoring the need for continued pharmacovigilance in this vulnerable population.
+\item Complementary machine-learning analysis demonstrated that case-level outcome triage can augment population-level signal detection, though with important limitations for rare outcomes that underscore the need for expert human review.
+\end{itemize}
+
+%% ---- INTRODUCTION ----
+\section{Introduction}
+
+Adolescent obesity and type~2 diabetes mellitus have emerged as critical public health challenges over the past two decades. Among U.S. youth aged 2-19 years, obesity prevalence rose from 19.3\% in 2017-2018 to 21.1\% in 2021-2023 [1], with the sharpest increases observed among adolescents aged 12-17 years. Concurrently, the incidence of type~2 diabetes in youth has been climbing at approximately 4.8\% per year [2], driven by the parallel rise in childhood obesity. These intertwined epidemics have led to increasingly early pharmacological intervention in adolescent populations.
+
+The pharmacological landscape for adolescent obesity and diabetes has expanded considerably. Anti-obesity medications (AOMs) now available or used off-label in this population include GLP-1 receptor agonists (semaglutide, liraglutide), lipase inhibitors (orlistat), and combination therapies (phentermine-topiramate). For type~2 diabetes, metformin remains the first-line agent [3], supplemented by insulin preparations, SGLT2 inhibitors (empagliflozin), DPP-4 inhibitors (sitagliptin), and newer GLP-1 receptor agonists. While some of these agents have received paediatric indications (liraglutide 3.0\,mg was approved by the FDA for adolescents $\geq$12 years with obesity in December 2020 [4, 5], and semaglutide 2.4\,mg received the same indication in December 2022), many others are prescribed off-label with limited clinical trial safety data specific to this age group, consistent with broader FAERS reporting patterns in paediatric populations, where off-label use is the single most frequently reported adverse-event category [6].
+
+Children and adolescents are not simply ``small adults''; their pharmacokinetics differ substantially due to developmental variations in hepatic metabolism, renal clearance, body composition, and neuroendocrine regulation [6, 7]. These age-specific pharmacological and pharmacokinetic variations may predispose adolescent populations to increased drug toxicity risks or to adverse event profiles that diverge from those documented in adult populations. Of particular concern are gastrointestinal effects of GLP-1 agonists [8], the metabolic acidosis risk with metformin [9], psychiatric effects including suicidal ideation reported with some AOMs [10], and cardiovascular safety in a population with developing cardiac systems [7].
+
+Post-marketing pharmacovigilance through the FDA Adverse Event Reporting System (FAERS) has become an essential tool for identifying drug safety signals that clinical trials, often limited in sample size and duration, cannot detect [11, 12]. Disproportionality analysis, which compares the observed reporting frequency of a specific drug-event combination against the expected frequency based on the entire database, has been widely used to detect safety signals across a broad range of drug classes and populations [13, 14]. Recent studies have applied these methods to antidepressants in children aged 6-17 years [13], respiratory medications [15] and TNF-$\alpha$ inhibitors [16] in paediatric patients, and, in the general population, to drug-induced acute respiratory distress syndrome [14] and drug-related cardiovascular risk [17], the latter using the same four-metric framework adopted here. However, no study has systematically analysed the full spectrum of safety signals for medications commonly prescribed to adolescents with obesity and type~2 diabetes using FAERS data with multiple disproportionality metrics.
+
+To address this gap, the current study employed the FAERS database covering 2021Q1-2025Q4 to conduct a comprehensive evaluation of adverse events associated with medications commonly prescribed to adolescents aged 12-17 years with obesity and type~2 diabetes, including anti-diabetic agents, lipid-lowering drugs, antihypertensives and GLP-1 receptor agonists. The study applied four established signal detection methods (PRR, ROR, IC, EBGM) for population-level analysis, complemented by a machine-learning model (XGBoost) for case-level outcome triage. Through this dual-method approach, the analysis aims to provide evidence-based guidance for clinical practice and regulatory monitoring in this vulnerable population.
+
+%% ---- MATERIALS AND METHODS ----
+\section{Methods}
+
+\subsection{Study Design}
+This was a retrospective disproportionality analysis of individual case safety reports in FAERS, complemented by a secondary machine-learning analysis of reported case outcomes. The study is reported with reference to the READUS-PV guideline for disproportionality analyses [18], the STROBE statement for observational studies [19] and the TRIPOD+AI statement for prediction models [20]; the completed checklists are provided in Online Resources 1--3.
+
+\subsection{Ethics Statement}
+This study used publicly available ASCII text data files from the FAERS database, covering the period 2021Q1--2025Q4. As these files are de-identified and no personally identifiable information was accessed, formal ethical approval was not required. All procedures adhered to the ethical principles of the Declaration of Helsinki.
+
+\subsection{Research Subjects}
+The study examined two therapeutic panels of medications commonly prescribed to adolescents for obesity and type~2 diabetes management, summarised in Table~1.
+
+%% Table 1: Drug panels
+\begin{table}[htbp]
+\caption{Drug panels included in the disproportionality analysis}
+\label{tab:panels}
+\centering\scriptsize
+\begin{tabular}{|p{3.4cm}|c|p{7cm}|}
+\hline
+\textbf{Panel} & \textbf{N} & \textbf{Drugs} \\
+\hline
+Broad obesity-related (14 drugs) & 1,834 & Metformin, atorvastatin, lisinopril, losartan, semaglutide, liraglutide, tirzepatide, orlistat, empagliflozin, dapagliflozin, sitagliptin, glipizide, pioglitazone, insulin (regular, aspart, glargine, lispro) \\
+\hline
+Selected obesity-related (4 drugs) & 223 & Metformin, atorvastatin, lisinopril, losartan \\
+\hline
+Broad diabetes-related (10 drugs) & 971 & Semaglutide, liraglutide, tirzepatide, empagliflozin, dapagliflozin, sitagliptin, glipizide, pioglitazone, insulin (aspart, regular, lispro, glargine), metformin \\
+\hline
+Selected diabetes-related (4 drugs) & 176 & Semaglutide, liraglutide, tirzepatide, empagliflozin \\
+\hline
+\end{tabular}
+\end{table}
+
+The broad obesity-related panel included both anti-obesity and commonly co-prescribed medications in adolescents with obesity-related comorbidities (hypertension, dyslipidaemia, type~2 diabetes). The selected obesity-related panel comprised the four most frequently prescribed agents in this population. It should be noted explicitly that these four agents (metformin, atorvastatin, lisinopril, losartan) are not themselves anti-obesity medications; they are a biguanide, a statin, an ACE inhibitor, and an angiotensin receptor blocker, respectively, and are included because they dominate the prescribing profile of adolescents managed for obesity-related comorbidity. The label ``obesity-related'' therefore denotes the clinical context of prescribing rather than the pharmacological class, and results from this panel should be read accordingly. The selected diabetes-related panel comprised newer agents with emerging adolescent safety data.
+
+While the initial research scope included a broader set of medications, preliminary data analysis indicated insufficient AE reports for several agents to support a comprehensive safety evaluation within the adolescent age band. The drugs listed above were those with adequate reporting volume ($\geq$3 reports for at least one drug-event combination) to permit meaningful disproportionality analysis. Drug names were normalised to standardised RxNorm Concept Unique Identifiers (RxCUIs) using the National Library of Medicine RxNorm REST API, with secondary fuzzy matching (RapidFuzz, threshold $\geq$85) for variants not resolved by the API. Several medications (e.g., metformin, dapagliflozin, semaglutide, empagliflozin, tirzepatide) were evaluated in both the obesity and diabetes panels. Where a single active ingredient appeared under more than one product entry (for example insulin lispro and insulin lispro Junior KwikPen), the per-drug case totals quoted in the Results are the sum across those entries, whereas Online Resource 8 reports each product entry separately. Consequently, the per-drug case counts reported in the Results section are pooled totals across both panels to reflect the complete adolescent reporting volume for each agent. Certain agents that form part of the adolescent anti-obesity treatment landscape, notably orlistat and the phentermine-topiramate combination, were screened but yielded too few adolescent reports to support disproportionality estimation; they are therefore listed in the panel definition but do not appear in the drug-specific results, and their absence should not be read as evidence of a favourable safety profile.
+
+\subsection{Data Source and Preprocessing}
+The FAERS database is a publicly accessible pharmacovigilance repository maintained by the FDA and refreshed on a quarterly basis; it formed the sole data source for this retrospective analysis [21]. The study downloaded 20 consecutive quarters of ASCII data files from 2021Q1 through 2025Q4, encompassing the demographic (DEMO), drug (DRUG), reaction (REAC), outcome (OUTC), therapy (THER), indication (INDI), and report-source (RPSR) tables. Following FDA guidelines, the dataset was processed by removing duplicate reports, retaining only the most recent version of each case based on the \texttt{FDA\_DT} field. Analyses were restricted to reports involving patients aged 12-17 years (adolescents). AEs were classified using the Medical Dictionary for Regulatory Activities (MedDRA, version~28.1) [22], with events coded at the Preferred Term (PT) level and mapped to System Organ Class (SOC) and High Level Group Term (HLGT) categories. Preferred Terms in the FAERS REAC files arrive pre-coded by the FDA using the MedDRA version current at each quarterly extract; the authors used MedDRA version~28.1 specifically for mapping those PTs to primary System Organ Class and HLGT. The study design is illustrated in Fig.~1.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\linewidth]{Fig1.png}
+\end{figure}
+
+\noindent\textbf{Fig.~1} Study flowchart of FAERS reports. STROBE-compliant case-selection flow from 8,598,529 raw FAERS records through deduplication (7,349,591 unique cases retained), exclusion of 3,189,002 records with no valid age recorded, age restriction to 12--17 years yielding 122,552 adolescent reports, and drug-panel filtering to the final analytical cohorts.
+
+\subsection{Data Analysis}
+Potential AE signals were flagged using the fourfold disproportionality framework (Table~2), scored against four established detection algorithms (Table~3). Rather than relying on a single metric, this multi-algorithm approach cross-checks each candidate signal along two independent axes: how strongly the drug-event pair is statistically associated (intensity) and how often it has actually been reported (frequency).
+
+%% Table 2: Fourfold table
+\begin{table}[htbp]
+\caption{Fourfold table for disproportionality analyses}
+\label{tab:fourfold}
+\centering\footnotesize
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Event groups} & \textbf{Drug used} & \textbf{Other drugs} & \textbf{Sums} \\
+\hline
+Event & $a$ & $c$ & $a + c$ \\
+\hline
+Other events & $b$ & $d$ & $b + d$ \\
+\hline
+Sums & $a + b$ & $c + d$ & $a + b + c + d$ \\
+\hline
+\end{tabular}
+\end{table}
+
+%% Table 3: Signal detection formulas
+\begin{table}[htbp]
+\caption{Computational formulae and thresholds of signal detection}
+\label{tab:signal_formulas}
+\centering\footnotesize
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Algorithm} & \textbf{Equation} & \textbf{Criteria} \\
+\hline
+ROR & $\text{ROR} = \dfrac{ad}{bc}$ & 95\% CI lower bound $> 1$, $N \geq 3$ \\[6pt]
+\hline
+PRR & $\text{PRR} = \dfrac{a(c+d)}{c(a+b)}$ & PRR $\geq 2$, $\chi^2 \geq 4$, $N \geq 3$ \\[6pt]
+\hline
+IC & $\text{IC} = \log_2 \dfrac{a \cdot (a{+}b{+}c{+}d)}{(a{+}b)(a{+}c)}$ & IC$_{025} > 0$ \\[6pt]
+\hline
+EBGM$^{\dagger}$ & $\text{EBGM} = \dfrac{a}{E}$, ~$E = \dfrac{(a{+}b)(a{+}c)}{a{+}b{+}c{+}d}$ & EB05 $\geq 2$ \\[6pt]
+\hline
+\end{tabular}
+\end{table}
+
+\noindent$^{\dagger}$The equation shown is the crude observed/expected ratio. The reported EBGM values were computed using the Multi-item Gamma Poisson Shrinker (GPS/DuMouchel) with a two-component Gamma mixture prior ($\alpha_1=0.2$, $\beta_1=0.06$; $\alpha_2=1.4$, $\beta_2=1.8$; mixing weight $w=0.1$), which applies 
+Bayesian shrinkage to the crude ratio, pulling estimates with small cell counts toward the database-wide 
+baseline. These prior hyperparameters were fixed at the values shown rather than estimated from the data by 
+maximum likelihood, a simplification of the original GPS procedure that should be borne in mind when 
+comparing EBGM values with those of other studies.
+
+
+\begin{enumerate}[noitemsep]
+\item \textbf{Reporting Odds Ratio (ROR):} Signal detected when the lower bound of the 95\% CI exceeds 1 and $N \geq 3$ [23].
+\item \textbf{Proportional Reporting Ratio (PRR):} Signal detected when PRR $\geq 2$, $\chi^2 \geq 4$, and $N \geq 3$ [24].
+\item \textbf{Information Component (IC):} Based on Bayesian Confidence Propagation Neural Network (BCPNN). Signal detected when IC$_{025}$ (lower 95\% credible interval) $> 0$ [25].
+\item \textbf{Empirical Bayes Geometric Mean (EBGM):} Using Multi-item Gamma Poisson Shrinker (MGPS) with Bayesian shrinkage. Signal detected when EB05 (lower 90\% one-sided CI) $\geq 2$ [26].
+\end{enumerate}
+
+A drug-event pair was flagged for signal intensity when its ROR 95\% CI lower bound exceeded 1 and, independently, when its PRR reached $\geq$2 with $\chi^2 \geq 4$ - both reflecting how strongly the pairing deviates from what would be expected by chance. Signal frequency, in contrast, was simply the raw case count for that pairing, requiring $\geq$3 reports before a signal was considered evaluable. Only pairs clearing all four algorithmic thresholds simultaneously were classified as high-confidence drug-event associations.
+
+The clinical characteristics of the patients, including sex, age, reporting country, and reporter type, were analysed descriptively. Dichotomous variables are expressed as frequencies and percentages, whereas continuous variables are presented as means $\pm$ standard deviations. Data analysis was performed using Python~3.11 with \texttt{pandas}, \texttt{scikit-learn}~1.5.0, and PostgreSQL~16 for data storage.
+
+\subsection{Complementary Machine-Learning Analysis}
+As a secondary analysis to complement the population-level disproportionality approach, the study developed a leakage-aware XGBoost classifier [27] to triage individual FAERS case reports by reported outcome severity: Death (DE), Life-Threatening (LT), Hospitalisation (HO), Disability (DS), Required Intervention (RI), and Other (OT). The model used 13 case-level features (age, sex, weight, drug sequence, route, role code, normalised drug name, RxCUI, dose amount/unit/form, indication, and adverse-event PT). Seriousness flags and directly outcome-derived features were excluded. The adverse-event Preferred Term was retained as a predictor; because it was also used to reconstruct missing outcome labels, it remains a residual source of target leakage, which is quantified in the Results and recorded in Online Resource 6.
+
+The dataset was split chronologically: training on 2021Q1-2023Q4, validation on 2024, and independent testing on 2025. All preprocessing was fitted on the training quarters alone: category encodings, imputation medians and the feature scaler were learned from 2021-2023 and applied unchanged to 2024 and 2025, with categories absent from training mapped to a reserved unseen level. The temporal pipeline, the baseline comparators, McNemar's test and the bootstrap intervals are implemented in \texttt{code/train\_temporal.py} in the accompanying repository. XGBoost was compared against majority-class, logistic regression, decision tree, and random forest baselines using McNemar's test ($\alpha = 0.001$) with 1{,}000 bootstrap resamples for confidence intervals [28]. This component was designed as a pharmacovigilance triage tool, not as evidence of causality or a replacement for human review.
+
+To clarify the outcome-label handling across the study: (1)~the descriptive analysis of FAERS outcomes used only genuinely observed outcome codes, with missing outcomes reported as such (33.9-53.1\% missingness across panels); (2)~the ML model development (training and validation) used observed outcomes supplemented by pseudo-labelled cases generated through a two-stage procedure, expanding the training set but not constituting clinical judgements; and (3)~the independent temporal test (2025 data) was drawn from the same modelling dataset and therefore carries the same mixture of observed and pseudo-labelled outcome codes as the training and validation partitions. The reported temporal Macro-F1 must accordingly be read as performance against the constructed outcome column rather than against independently observed outcomes. This is the principal reason the Preferred-Term lookup baseline outperforms the fitted model, and it is quantified in the Results and discussed under Limitations.
+
+
+\subsection{Use of Artificial Intelligence Tools}
+All research design decisions, analytical choices, interpretation of results, and scientific conclusions in this work are the authors' own. During the development of this work, the authors used AI-based tools, specifically ChatGPT (OpenAI), Perplexity AI, Z~AI, and Antigravity (Google DeepMind, a code-generation and manuscript-preparation assistant). These tools assisted with code development and debugging, data-processing pipeline implementation, statistical analysis scripting, manuscript drafting and revision, figure generation, and cross-checking technical details and terminology. The authors reviewed and edited all AI-generated output and take full responsibility for the accuracy and integrity of the published work.
+
+
+%% ---- RESULTS ----
+\section{Results}
+
+\subsection{Flowchart of Reporting}
+This study analysed 8,598,529 raw report records from the FAERS database (2021Q1-2025Q4). After removing duplicate case versions, 7,349,591 unique cases remained. Restricting to adolescents aged 12-17 years yielded 122,552 age-eligible reports. Among these, 1,834 cases involved at least one drug from the broad obesity-related panel, 223 from the selected obesity-related panel, 971 from the broad diabetes-related panel, and 176 from the selected diabetes-related panel (Fig.~1).
+
+\subsection{Basic Characteristics of Reported AEs}
+Demographic composition, reporter type, and geographic origin were summarised descriptively across the four study cohorts. Approximately 48.0\% of patients were female across all four panels, consistent with the known higher reporting frequency among female adolescents observed in prior FAERS studies [6]. The mean age was remarkably consistent, ranging from 14.50 to 14.63 years across panels. Most reports originated from healthcare professionals (51-56\%), with the United States contributing the majority of reports. Notably, outcome data was missing in one third to one half of all reports (33.9-53.1\%), a well-documented limitation of spontaneous reporting systems. The detailed demographic characteristics are presented in Table~4.
+
+%% Table 3: Demographics
+\begin{table}[htbp]
+\caption{Basic information of AE reports}
+\label{tab:demographics}
+
+\centering\footnotesize\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Characteristic} & \textbf{Broad Obesity} & \textbf{Selected Obesity} & \textbf{Broad Diabetes} & \textbf{Selected Diabetes} \\
+ & \textbf{(N\,=\,1,834)} & \textbf{(N\,=\,223)} & \textbf{(N\,=\,971)} & \textbf{(N\,=\,176)} \\
+\hline
+\multicolumn{5}{|l|}{\textbf{Age (years)}} \\
+\hline
+\quad Mean $\pm$ SD & $14.69 \pm 1.67$ & $14.57 \pm 1.75$ & $14.63 \pm 0.72$ & $14.50 \pm 0.44$ \\
+\hline
+\multicolumn{5}{|l|}{\textbf{Sex, n (\%)}} \\
+\hline
+\quad Female & 6,324 (54.1\%) & 5,830 (54.5\%) & 2,906 (55.8\%) & 184 (53.8\%) \\
+\quad Male & 4,964 (42.4\%) & 4,568 (42.7\%) & 2,015 (38.7\%) & 118 (34.5\%) \\
+\quad Unknown & 413 (3.5\%) & 303 (2.8\%) & 287 (5.5\%) & 40 (11.7\%) \\
+\hline
+\multicolumn{5}{|l|}{\textbf{Drug role, n (\%)}} \\
+\hline
+\quad Primary suspect & 1,761 (15.0\%) & 1,220 (11.4\%) & 1,224 (23.5\%) & 154 (45.0\%) \\
+\quad Concomitant & 9,027 (77.1\%) & 8,732 (81.6\%) & 3,410 (65.5\%) & 114 (33.3\%) \\
+\quad Secondary suspect & 857 (7.3\%) & 712 (6.7\%) & 546 (10.5\%) & 61 (17.8\%) \\
+\quad Interacting & 56 (0.5\%) & 37 (0.3\%) & 28 (0.5\%) & 13 (3.8\%) \\
+\hline
+\multicolumn{5}{|l|}{\textbf{Outcome distribution, n (\%)}} \\
+\hline
+\quad Hospitalisation (HO) & 2,011 (17.2\%) & 1,732 (16.2\%) & 1,094 (21.0\%) & 78 (22.8\%) \\
+\quad Other serious (OT) & 2,811 (24.0\%) & 2,483 (23.2\%) & 1,343 (25.8\%) & 101 (29.5\%) \\
+\quad Death (DE) & 475 (4.1\%) & 405 (3.8\%) & 306 (5.9\%) & 20 (5.8\%) \\
+\quad Life-threatening (LT) & 389 (3.3\%) & 323 (3.0\%) & 254 (4.9\%) & 25 (7.3\%) \\
+\quad Disability (DS) & 77 (0.7\%) & 73 (0.7\%) & 39 (0.7\%) & 2 (0.6\%) \\
+\quad Required intervention (RI) & 5 (0.04\%) & 3 (0.03\%) & 3 (0.06\%) & 0 (0.00\%) \\
+\quad Missing & 5,933 (50.7\%) & 5,682 (53.1\%) & 2,169 (41.6\%) & 116 (33.9\%) \\
+\hline
+\multicolumn{5}{|l|}{\textbf{Reporter type}} \\
+\hline
+\quad Health professional & 6,083 (52.0\%) & 5,457 (51.0\%) & 2,929 (56.2\%) & 187 (54.7\%) \\
+\quad Consumer & 4,327 (37.0\%) & 4,028 (37.6\%) & 1,692 (32.5\%) & 108 (31.6\%) \\
+\quad Unknown & 1,291 (11.0\%) & 1,216 (11.4\%) & 587 (11.3\%) & 47 (13.7\%) \\
+\hline
+\end{tabular}
+
+\vspace{4pt}
+{\footnotesize\raggedright
+\textit{Note.} Outcome counts are genuinely observed FAERS outcome codes, one per report; the observed
+categories plus Missing sum to the panel total in every column. The machine-learning modelling dataset
+uses these same reports but fills the missing outcomes by the two-stage pseudo-labelling procedure
+described in Methods, so its class distribution differs from the observed distribution shown here:
+in the broad obesity-related panel ($N=11{,}701$) the 5{,}933 reports without an observed outcome
+are assigned HO ($n=1{,}646$), OT ($n=4{,}166$), DE ($n=50$), LT ($n=34$) and DS ($n=37$), giving the
+modelling-set totals of HO 3{,}657, OT 6{,}977, DE 525, LT 423, DS 114 and RI 5. No observed outcome
+code is altered by that procedure; every modelling-set class count is the observed count plus its
+imputed increment.\par}
+
+\end{table}
+
+\subsection{Signal Distribution and Detection at the SOC Level}
+AEs associated with the anti-obesity and anti-diabetic panels were categorised according to the SOC classification of MedDRA (Fig.~2), using the official PT-to-primary-SOC hierarchy. For the broad obesity-related panel, AEs spanned all 27 SOC categories. The most frequently reported SOC categories were general disorders and administration site conditions (17.1\%, $n=2{,}001$), injury, poisoning and procedural complications (12.9\%, $n=1{,}508$), and skin and subcutaneous tissue disorders (7.7\%, $n=902$); infections and infestations (7.0\%), gastrointestinal disorders (6.5\%) and psychiatric disorders (5.9\%) followed. Within gastrointestinal disorders, nausea, vomiting, and abdominal pain were the predominant AEs, reflecting the known pharmacological profiles of GLP-1 receptor agonists. The diabetes-related panel showed a broadly similar ranking (general disorders 15.4\%, injury/poisoning 13.0\%, gastrointestinal disorders 7.9\%) but with a notably higher proportion of metabolism and nutrition disorders (7.4\% vs 4.0\% in the obesity panel), reflecting the metabolic nature of the underlying condition and the pharmacological mechanisms of anti-diabetic agents.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\linewidth]{Fig2.png}
+\end{figure}
+
+\noindent\textbf{Fig.~2} AE distribution at the SOC level for the broad obesity-related and broad diabetes-related panels. Horizontal bar chart showing, for each MedDRA System Organ Class (version~28.1), the percentage of panel reports recording at least one adverse event mapped to that class. Percentages are computed over reports (broad obesity $N=11{,}701$; broad diabetes $N=5{,}208$) and do not sum to 100, because a single report may contribute events to more than one class
+
+\subsection{Signal Distribution and Detection at the PT Level}
+Of the 1,791 drug-event pairs with $N \geq 2$ that were evaluated, 360 met the ROR signal criteria specified in Table~3, namely a 95\% CI lower bound exceeding 1 together with a minimum case count of $N \geq 3$. Pairs supported by only two reports were retained in Online Resource 8 for completeness but were not counted as signals, since they fall below the pre-specified frequency threshold. Of these, 231 pairs (broad obesity panel) satisfied all four algorithmic thresholds simultaneously and are flagged in Online Resource 8 as four-metric concordant. The top adverse event signals for key drugs, ranked by the number of positive signals along with their PT and ROR values, are presented in Fig.~3.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{Fig3.png}
+\end{figure}
+
+\noindent\textbf{Fig.~3} The top AEs associated with three drugs showing notable disproportionality signals in the corrected analysis: (a)~insulin aspart, (b)~insulin lispro, and (c)~lisinopril, ranked by number of reports ($N$) and ROR value. Full signal-detection results for all panel drugs are provided in Online Resource 8
+
+Among the strongest confirmed signals (all four metrics concordant):
+
+\begin{itemize}[noitemsep]
+\item \textbf{Insulin Aspart and Diabetic Ketoacidosis:} ROR\,=\,630.87, 95\%\,CI 439.57--905.42, $N=63$. This is the highest-N signal in the corrected analysis. Insulin aspart is commonly used in adolescents with type~1 diabetes and obesity; DKA is a known, serious complication. The signal is consistent with FAERS reporting patterns for insulin-associated DKA and does not indicate unexpected risk.
+\item \textbf{Atorvastatin and Photodermatosis:} ROR\,=\,4{,}610.52, 95\%\,CI 1{,}465.90--14{,}500.90, $N=7$. This high-ROR signal warrants cautious interpretation given the small case count ($N=7$); photodermatosis may reflect reporting from photosensitising drug interactions in adolescents on multiple medications.
+\item \textbf{Semaglutide and Nausea/Vomiting:} GLP-1 receptor agonists are well-known to cause dose-dependent gastrointestinal adverse events as their primary tolerability concern [30, 31].
+\end{itemize}
+
+A notable finding in the corrected analysis is a strong reporting signal for \textbf{Semaglutide and Obstructive Pancreatitis} (ROR\,=\,3{,}601.35, 95\%\,CI 371.50--34{,}912.15, $N=3$) and semaglutide--pancreatitis (ROR\,=\,23.32, $N=5$). Both signals satisfied all four disproportionality criteria. The previously reported semaglutide--optic ischaemic neuropathy signal (ROR=3,601.35, $N=14$ in the prior analysis) arose entirely from records with no recorded age; restricting to confirmed adolescent ages, that signal is not reproduced. The semaglutide--pancreatitis signal is consistent with published case reports and regulatory communications for GLP-1 receptor agonists [38].
+
+
+\subsection{Drug-Specific Adverse Event Profiles}
+
+\subsubsection{Metformin (N\,=\,0 PS/SS; excluded from primary disproportionality analysis)}
+Metformin showed zero PS/SS-role cases in the corrected analysis (after restricting to confirmed adolescent ages with PS/SS roles), and therefore no disproportionality signals are reported for metformin. The previously reported metformin--lactic acidosis signal (ROR\,=\,61.22 in the prior analysis) arose entirely from records with imputed or missing ages and is not reproduced in this corrected analysis. This is an important methodological correction that underscores the impact of age-verification stringency on FAERS-based pharmacovigilance. The most frequently recorded Preferred Terms 
+(drug ineffective, $N=196$; product dose omission issue, $N=130$; off-label use, $N=107$; product use in 
+unapproved indication, $N=102$) did not reach the ROR signal threshold, indicating that they are reported 
+no more often for metformin than across the rest of the panel. A recent 2025 FAERS analysis specifically focused on metformin in adolescents identified novel signals including ataxia, areflexia, muscle weakness, and rhabdomyolysis [33]. Those terms were not reproduced as signals in the present panel: ataxia and areflexia do not appear among the 1{,}791 evaluated drug-event pairs (across all panels and role filters), and rhabdomyolysis ($N=10$, ROR\,=\,0.77) and muscular weakness ($N=6$, ROR\,=\,0.76) for the metformin single-ingredient entry did not meet the ROR signal criteria. Notably, metformin was also associated with a cluster of psychiatric and self-harm PTs: completed suicide ($N=87$, ROR\,=\,5.08, 95\%\,CI 3.23-7.99), intentional overdose ($N=46$, ROR\,=\,2.14), and suicide attempt ($N=42$, ROR\,=\,3.66). In every one of these reports metformin was recorded as either the primary (55\%) or secondary (45\%) suspect rather than a concomitant medication, a pattern strongly enriched relative to metformin's baseline concomitant role proportion across the panel. Recorded indications included suicide attempt, polycystic ovarian 
+syndrome, and diabetes mellitus. None of these self-harm PTs for the metformin single-ingredient entry achieved four-metric concordance (all failed 
+the EBGM criterion), but their consistency across multiple related PTs warrants close monitoring in this 
+age group. The signal is more likely to reflect metformin as the agent of intentional overdose rather than a causal relationship with suicidality, but this cannot be determined from FAERS reports alone.
+
+\subsubsection{Atorvastatin (N\,=\,89 all roles; 39 PS/SS)}
+Atorvastatin (including atorvastatin calcium formulations), used as a concomitant medication in adolescents with obesity-related dyslipidaemia, showed a prominent corrected signal for photodermatosis (ROR\,=\,4{,}610.52, 95\%\,CI 1{,}465.90--14{,}500.90, $N=7$), which met all four disproportionality criteria. Additional signals included drug-induced liver injury and muscle-related events. Drug ineffective was the most frequently recorded Preferred Term but did not meet the ROR signal 
+threshold.
+
+\subsubsection{Lisinopril (N\,=\,641 all roles; 141 PS/SS) and Losartan (N\,=\,101 all roles; 36 PS/SS)}
+These cardiovascular agents, commonly co-prescribed in adolescents with obesity-related hypertension, were predominantly present as concomitant medications. Lisinopril showed signals for product dose omission issue ($N=117$, ROR\,=\,2.43) and intentional dose omission ($N=27$, ROR\,=\,7.38, four-metric concordant); off-label use ($N=42$, ROR\,=\,1.27) did not meet the signal threshold. Losartan showed a signal for anhedonia ($N=21$, ROR\,=\,2.04), a psychiatric AE warranting further investigation in adolescents on polypharmacy regimens.
+
+\subsubsection{Semaglutide (N\,=\,123 all roles; 105 PS/SS)}
+Semaglutide showed a signal for obstructive pancreatitis (ROR\,=\,3{,}601.35, $N=3$) and pancreatitis (ROR\,=\,23.32, $N=5$), consistent with the GLP-1 agonist class effect. Vomiting ($N=6$, ROR\,=\,3.95), consistent with the known gastrointestinal profile of semaglutide, was also identified. Psychiatric AE signals, including mood changes and anxiety, were also identified, 
+consistent with pharmacovigilance studies flagging potential psychiatric effects of GLP-1 receptor agonists 
+[10].
+
+\subsubsection{Dapagliflozin (N\,=\,608)}
+The top AEs for dapagliflozin, insulin glargine, tirzepatide, and empagliflozin are presented in Fig.~4.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.95\linewidth]{Fig4.png}
+\end{figure}
+
+\noindent\textbf{Fig.~4} The top AEs associated with four additional drugs showing notable disproportionality signals: (a)~dapagliflozin, (b)~insulin glargine, (c)~tirzepatide, and (d)~empagliflozin, ranked by the number of positive signals along with their PT and ROR values. Together with Fig.~3, these seven drugs illustrate the strongest signals identified
+
+Dapagliflozin, an SGLT2 inhibitor, showed the strongest cardiovascular signal in the corrected analysis: cardiac contractility decreased ($N=3$, ROR\,=\,9{,}425.62, 95\%\,CI 1{,}738.95--51{,}089.58), a finding of considerable clinical concern in adolescents with developing cardiac systems. Additional signals included ketoacidosis ($N=10$, ROR\,=\,9.72), nephrotic syndrome ($N=6$, ROR\,=\,162.46), nephritis ($N=4$, ROR\,=\,107.95), and body mass index increased ($N=7$, ROR\,=\,63.28). Together these support renal and cardiovascular 
+monitoring during SGLT2 inhibitor therapy in adolescents. Death was the most frequently reported outcome PT for dapagliflozin ($N=52$, ROR\,=\,17.84, 95\%\,CI 12.51-25.45), with 92\% of reports listing dapagliflozin as the primary suspect; indications in these cases included chronic kidney disease and heart failure comorbidities, suggesting seriously ill patients. The cardiac contractility decreased signal met all four criteria ($N=3$), though 
+FAERS outcome codes conflate the recorded event with the suspected causal pathway. Haematological signals 
+were also observed: thrombocytopenia ($N=12$, ROR\,=\,18.21) and neutropenia ($N=10$, ROR\,=\,13.61), both 
+four-metric concordant, which have not been prominently reported in prior adolescent SGLT2 inhibitor 
+pharmacovigilance.
+
+\subsubsection{Insulin preparations (Glargine N\,=\,283; Aspart N\,=\,346; Lispro N\,=\,287)}
+Insulin preparations showed expected signals for blood glucose abnormalities and hypoglycaemia. Insulin glargine showed signals for oedema ($N=6$, ROR\,=\,90.01), acute kidney injury ($N=16$, ROR\,=\,6.58) and completed suicide ($N=6$, ROR\,=\,3.41, 95\%\,CI 1.48-7.83), where insulin was listed as a secondary suspect in all six reports. Insulin aspart showed blood glucose increased ($N=26$, ROR\,=\,10.95) and insulin lispro showed blood glucose increased ($N=13$, ROR\,=\,6.11) and diabetic ketoacidosis ($N=6$, ROR\,=\,8.88).
+
+\subsubsection{Empagliflozin (N\,=\,145) and Tirzepatide (N\,=\,130)}
+These newer agents had smaller report volumes. Empagliflozin showed interstitial 
+lung disease ($N=4$, ROR\,=\,475.55), hepatic function abnormal ($N=6$, ROR\,=\,361.77), and rash 
+papular ($N=6$, ROR\,=\,241.17). Tirzepatide, a dual GIP/GLP-1 receptor agonist, showed signals for intestinal obstruction ($N=4$, ROR\,=\,106.50), suicidal ideation ($N=4$, ROR\,=\,38.02), and pancreatitis ($N=6$, ROR\,=\,33.78), consistent with the GLP-1 agonist class profile. A meta-analysis of GLP-1 RA clinical trials in adolescents found the safety profile generally acceptable, with AEs similar to those observed in adults [31], but continued monitoring is warranted.
+
+
+\subsection{Complementary ML-Augmented Signal Validation}
+The XGBoost model, trained on a temporally separated 2021-2023 training set and evaluated on a chronologically held-out 2025 test set ($N=2{,}812$), achieved a temporal Macro-F1 of 0.389 (95\%\,CI 0.353--0.434; XGBoost~3.2.0, seed~42, train-only preprocessing). Macro-F1 was computed over the five outcome classes present in the 2025 partition; Required Intervention had no test cases (support\,=\,0), so F1 is undefined for that class. Including it as a zero-support class gives a six-class Macro-F1 of 0.324, reported here as a sensitivity analysis. Under a conventional random-split setup (80/20, stratified), XGBoost achieved the best Macro-F1 (0.629) among all fitted models in the broad obesity-related panel ($N=11{,}701$), ahead of Random Forest (0.563). This random-split figure reproduces the original analysis pipeline, in which the category encoders and the feature scaler were fitted on the complete dataset before splitting; it is therefore optimistically biased and is reported only for comparison with the temporal result, not as a performance estimate. The PT-only lookup baseline, which assigns each report the most frequent training-period outcome for its Preferred Term, attained a temporal Macro-F1 of 0.594 (95\%\,CI 0.545--0.626), exceeding the fitted XGBoost model. This is a direct consequence of the outcome-label construction: approximately half of outcome codes were imputed from the Preferred Term, so the lookup partially recovers the imputation rule.
+
+McNemar's test (Table~5) confirmed that XGBoost significantly outperformed the majority-class, logistic regression, decision tree, and random forest comparators ($p<0.001$ for all). The PT-only lookup baseline, however, significantly outperformed XGBoost ($b=134$, $c=453$, $\chi^2=172.27$, $p=2.4 \times 10^{-39}$), attaining a temporal Macro-F1 of 0.594 versus 0.389. This result is a direct consequence of outcome-label construction (Stage~1 pseudo-labelling derived labels from the Preferred Term, which is also model feature~13); it is quantified and disclosed as a limitation rather than treated as evidence of a fundamental model failure.
+
+%% Table 5: McNemar's Test (reproduced with XGBoost 3.2.0, temporal split)
+%% b = XGBoost correct / comparator wrong; c = XGBoost wrong / comparator correct.
+%% PT-only lookup row: c > b indicates PT-lookup outperforms XGBoost.
+\begin{table}[htbp]
+\caption{McNemar's test: pairwise comparison of XGBoost (temporal evaluation, 2025 test set, $N=2{,}812$) against baseline classifiers on the broad obesity-related panel. $b$~=~cases where XGBoost is correct and the comparator is wrong; $c$~=~cases where XGBoost is wrong and the comparator is correct. All results reproduced with XGBoost~3.2.0, seed~42, train-only preprocessing}
+\label{tab:mcnemar}
+\centering\footnotesize
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\textbf{Comparison} & \textbf{$b$} & \textbf{$c$} & \textbf{$\chi^2$} & \textbf{$p$-value} & \textbf{Winner} \\
+\hline
+XGBoost vs. Majority Class & 433 & 193 & 91.25 & $1.3 \times 10^{-21}$ & XGBoost \\
+\hline
+XGBoost vs. Logistic Regression & 441 & 202 & 88.09 & $6.2 \times 10^{-21}$ & XGBoost \\
+\hline
+XGBoost vs. Decision Tree & 441 & 294 & 29.00 & $7.2 \times 10^{-8}$ & XGBoost \\
+\hline
+XGBoost vs. Random Forest & 358 & 200 & 44.17 & $3.0 \times 10^{-11}$ & XGBoost \\
+\hline
+XGBoost vs. PT-only lookup & 134 & 453 & 172.27 & $2.4 \times 10^{-39}$ & PT-lookup \\
+\hline
+\end{tabular}
+\end{table}
+
+Three illustrative examples demonstrate where the two analytical approaches agree and diverge:
+
+\begin{enumerate}[noitemsep]
+\item \textbf{Concordance:} For Insulin Aspart and Diabetic Ketoacidosis, the strong four-metric disproportionality signal (ROR\,=\,630.87, $N=63$) aligned with high ML-predicted probability of LT/DE outcomes, driven by indication and weight features. Both population-level and case-level evidence pointed in the same direction.
+\item \textbf{Signal without severity discrimination:} For Lisinopril and Angioedema, a strong disproportionality signal (ROR\,=\,33.79) existed alongside weak ML discrimination of outcome severity, indicating that a safety signal can be real without the model being able to classify its clinical consequences reliably.
+\item \textbf{Sparse classes:} Required Intervention is represented by only five records in the modelling dataset and by none at all in the 2025 test year, so no interpretable model behaviour can be reported for that class. Disability is similarly sparse. Neither class supports a case-level claim, and both are reported here only to document the limits of the outcome distribution.
+\end{enumerate}
+
+
+%% ---- DISCUSSION ----
+\section{Discussion}
+
+Taken together, this study provides a systematic characterisation of safety signals for medications commonly prescribed to adolescents aged 12-17 years with obesity and type~2 diabetes, drawing on FAERS reports from 2021 through 2025. The discussion is organised around three threads that ran through the analysis: who was affected (demographic characteristics), what specifically went wrong (drug-specific adverse event profiles), and how population-level disproportionality signals compared with case-level machine-learning triage as complementary pharmacovigilance tools.
+
+As presented in Table~4, the study cohorts exhibited consistent demographic profiles across all four panels, with 48.0\% female overall (55.8\% in the broad obesity panel) predominance. This sex distribution is consistent with previous FAERS-based studies of paediatric populations [6] and may partly reflect the higher prevalence of depression and anxiety-related comorbidities in adolescent females, which often co-occur with obesity and diabetes and drive polypharmacy. The mean age of 14.50-14.63 years indicates that mid-adolescence represents the peak period for these medication reports, consistent with the typical onset of obesity-related pharmacotherapy around puberty. Healthcare professionals constituted the majority of AE reporters (51-56\%), reflecting both the clinical setting in which these medications are prescribed and the structured reporting infrastructure in the United States, which contributed the largest share of reports.
+
+A critical finding was the high rate of outcome missingness (33.9-53.1\% across panels). This is a well-documented limitation of FAERS [34] and has important methodological implications: any analysis that treats unreported outcomes as ``non-serious'' will systematically underestimate the proportion of severe events. This was addressed through a two-stage pseudo-labelling procedure for the ML component, though pseudo-labels should be understood as experimental expansions of the training set, not clinical judgements about what actually happened to that patient.
+
+The disproportionality analysis identified key drug--adverse-event associations after restricting to confirmed adolescent ages with PS/SS roles. The strongest signal by ROR was insulin aspart--diabetic ketoacidosis (ROR\,=\,630.87, 95\%\,CI 439.57--905.42, $N=63$), consistent with the well-known risk of DKA in adolescents using rapid-acting insulin analogues. Lisinopril showed signals for completed suicide (ROR\,=\,35.31, $N=23$) and angioedema (ROR\,=\,33.79, $N=14$), the latter consistent with the ACE-inhibitor class effect [9]. The atorvastatin--photodermatosis signal (ROR\,=\,4{,}610.52, $N=7$) aligns with reports of photosensitising reactions for statin-based therapy. GLP-1 receptor agonist gastrointestinal signals (nausea, vomiting, decreased appetite) are consistent with their pharmacological mechanism of action and have been well-documented in both adult and paediatric populations [30, 31].
+
+The previously reported semaglutide--optic ischaemic neuropathy signal ($N=14$, ROR\,=\,3,601 in the prior analysis) is not reproduced in this corrected analysis. All 14 cases contributing to that prior signal had no recorded age in FAERS and were included only through age imputation; restricting to confirmed adolescent ages eliminates them. This methodological correction is an important finding in its own right, illustrating that imputed-age records can generate spurious high-ROR signals. The semaglutide--pancreatitis signal identified here (ROR\,=\,23.32, $N=5$) is consistent with the class effect for GLP-1 receptor agonists and with published regulatory communications [38]. This finding underscores the importance of applying multiple disproportionality metrics with rigorous age verification, as recommended by prior methodological guidance, rather than relying on imputed-age records.
+
+The ML component, while not the primary analytical method, provided a complementary perspective. The McNemar's test results (Table~5) confirm that XGBoost significantly outperforms the majority-class, logistic regression, decision tree, and random forest baselines for case-level outcome classification. The PT-only lookup heuristic, however, significantly outperformed XGBoost ($p=2.4 \times 10^{-39}$), driven by the partial derivation of outcome labels from the Preferred Term feature. However, the temporal evaluation revealed important limitations: class-specific recall for rare outcomes (Death 0.389, Life-Threatening 0.059) was moderate to poor, indicating that the model would miss many clinically critical cases if used without human oversight. This is interpreted as evidence that ML-based triage should complement, not replace, pharmacovigilance expert review. The gap between random-split performance (Macro-F1 0.629, itself optimistically biased) and temporal performance (Macro-F1 0.389) further illustrates the well-documented problem of dataset shift in pharmacovigilance data [39], where the distribution of drugs, AEs, and reporting patterns changes over time.
+
+\subsection{Strengths and Limitations}
+This study has several strengths. First, this study represents a systematic, multi-metric disproportionality analysis of safety signals for medications commonly prescribed to adolescents with obesity and type~2 diabetes, including drug classes (statins, ACE inhibitors, ARBs) that are not anti-obesity or anti-diabetic agents per se but dominate the prescribing profile of this population. Second, it covers the most recent FAERS data (2021-2025), capturing the period of rapid GLP-1 agonist adoption in paediatric populations, which increased approximately 6-fold among US adolescents and young adults between 2020 and 2023 [40]. Third, it applies all four established signal detection methods (ROR, PRR, IC, EBGM), providing robust multi-dimensional signal evaluation. Fourth, it complements population-level disproportionality with case-level ML analysis and formal statistical comparison (McNemar's test).
+
+However, several limitations must be acknowledged. FAERS data is based on spontaneous reporting and cannot establish causality or estimate incidence rates; all findings should be interpreted as reporting signals, not confirmed adverse drug reactions. Under-reporting, stimulated reporting (e.g., media attention to GLP-1 agonists), and confounding by indication are inherent limitations. No individual case causality assessment was performed; the analysis did not systematically evaluate chronology, dechallenge, rechallenge, or dose-response relationships. The high rate of outcome missingness (approximately half of the broad obesity-related panel) limits both disproportionality and ML analyses. The selected diabetes-related panel ($N=176$) had limited statistical power for rare-outcome analysis. As the four panels overlap and differ in size, product mix, and missingness, cross-panel comparisons should be interpreted as sensitivity analyses, not independent evidence of generalisation. Because the panels overlap at the case level, a single report contributing more than one panel drug is counted once within each relevant panel; per-drug totals therefore sum to more than the panel case counts and should not be added together. A further limitation concerns the machine-learning component specifically. Approximately half of the reports carried no recorded outcome, and those labels were reconstructed from the adverse-event Preferred Term, which is also one of the thirteen model features. The target is therefore partly derived from a predictor. Two consequences follow, both quantified in the accompanying repository: removing the Preferred Term from the feature set reduces temporal Macro-F1 substantially, and a lookup table that simply returns each Preferred Term's most frequent training-period outcome outperforms every fitted model on held-out 2025 data. The case-level results should accordingly be read as a description of how outcome labels relate to reported event terms in FAERS, not as evidence of independent predictive capability, and the SHAP ranking in Online Resource 11, in which the Preferred Term dominates, reflects the same dependency. Finally, the empirical Bayes estimates in Online Resource 8 were produced by the signal-detection pipeline rather than recomputed for this report; readers assessing individual pairs should consult all four metrics together, as illustrated by the semaglutide example above, rather than any single metric in isolation.
+
+\subsection{Future Research}
+Future studies should focus on three priorities. First, prospective clinical studies are needed to confirm the causal relationships suggested by the disproportionality signals identified here, particularly for novel or under-reported AEs. Second, longer-term follow-up of adolescents on GLP-1 receptor agonists is essential, as these medications are increasingly prescribed for extended durations during a critical period of physical development. Third, the ML methodology could be improved through larger training sets, incorporation of drug interaction features, and ensemble approaches that combine population-level and case-level evidence for integrated pharmacovigilance.
+
+
+%% ---- CONCLUSION ----
+\section{Conclusions}
+
+This corrected four-metric disproportionality analysis of 2021--2025 FAERS data, restricted to 122,552 adolescents with confirmed ages and primary/secondary suspect drug roles, characterised the adverse event profiles of medications commonly prescribed to adolescents aged 12--17 years with obesity and type~2 diabetes. The corrected analysis identified 231 four-metric concordant signals in the broad obesity-related panel and 151 in the broad diabetes-related panel. The strongest signals included insulin aspart--diabetic ketoacidosis (ROR\,=\,630.87, $N=63$), lisinopril--completed suicide (ROR\,=\,35.31, $N=23$), atorvastatin--photodermatosis (ROR\,=\,4{,}610.52, $N=7$), dapagliflozin--cardiac contractility decreased (ROR\,=\,9{,}425.62, $N=3$) and semaglutide--pancreatitis (ROR\,=\,23.32, $N=5$). Previously reported signals based on imputed-age records (metformin--lactic acidosis, semaglutide--optic ischaemic neuropathy, dapagliflozin--cardiac failure) are not reproduced when analysis is restricted to confirmed adolescent ages. The complementary machine-learning analysis demonstrated that case-level triage can augment population-level pharmacovigilance, though with important limitations for rare-outcome detection. Additional prospective research is warranted to confirm these findings and enhance medication safety in this vulnerable population.
+
+
+
+%% ---- ACKNOWLEDGMENTS ----
+% Acknowledgments are on the title page, as the Drug Safety guideline asks.
+
+
+%% ---- DECLARATIONS (Drug Safety / Springer requirement) ----
+\section*{Declarations}
+
+\paragraph*{Funding} The authors received no specific funding for this work.
+
+\paragraph*{Competing interests} The authors declare that they have no competing interests relevant to the content of this article.
+
+\paragraph*{Ethics approval} This study used publicly available, de-identified data from the FDA FAERS database. No ethics committee approval was required as no personally identifiable information was accessed. All procedures adhered to the ethical principles of the Declaration of Helsinki.
+
+\paragraph*{Consent to participate} Not applicable. This study used publicly available, de-identified spontaneous reporting data.
+
+\paragraph*{Consent for publication} Not applicable.
+
+\paragraph*{Availability of data and material}
+The FAERS quarterly ASCII data files that constitute the sole primary data source for this study are publicly available from the U.S. Food and Drug Administration at \url{https://fis.fda.gov/extensions/FPD-QDE-FAERS/FPD-QDE-FAERS.html}. All derived data and code required to reproduce the results reported here are openly available at GitHub (\url{https://github.com/AthervTelkar2498/adolescent-faers-adr-glp1-sglt2-insulin-disproportionality}) and archived on Zenodo under the concept DOI \url{https://doi.org/10.5281/zenodo.22767355}, which always resolves to the most recent version of the archive.
+
+The archive contains: (i)~the complete signal-detection output for all 1,791 evaluated drug-event pairs, including the 2$\times$2 cell counts and every ROR, PRR, IC and EBGM value and interval reported in this manuscript (Online Resource 8); (ii)~the chronological machine-learning pipeline, baseline comparators, McNemar tests and bootstrap intervals (\texttt{code/train\_temporal.py}) together with its complete output (\texttt{code/results\_temporal.json}), from which every value in Table~5 and in the machine-learning subsection can be reproduced; (iii)~the figure-regeneration script (\texttt{code/regen\_figs.py}) for Figs.~1, 3 and 4 and Online Resource 10; and (iv)~the derived, de-identified, adolescent-restricted, drug-panel-filtered analytic datasets for all four panels.
+
+Three limitations of this archive are stated explicitly. First, the source code that computed the ROR, PRR, IC and EBGM statistics is not included; the disproportionality analysis is deposited as its complete numerical output (Online Resource 8) rather than as executable code, and the archived figure script only reads those columns. Second, Fig.~2 (SOC distribution) and Online Resource 11 (SHAP importance) cannot be regenerated from the archive alone: the former requires the licensed MedDRA Preferred-Term-to-System-Organ-Class mapping and the latter requires the fitted model object. Third, MedDRA is a proprietary dictionary licensed from the MSSO; no MedDRA distribution file is redistributed in the archive, and reproducing the exact SOC mapping requires the reader's own MedDRA licence.
+
+\paragraph*{Code availability} The complete reproducibility code is archived on Zenodo (\url{https://doi.org/10.5281/zenodo.22767355}) and GitHub (\url{https://github.com/AthervTelkar2498/adolescent-faers-adr-glp1-sglt2-insulin-disproportionality}).
+
+\paragraph*{Author contributions}
+\noindent\textbf{Conceptualization:} Atherv Telkar, Amey Telkar.\\
+\textbf{Data curation:} Atherv Telkar, Amey Telkar, Darshan Ruikar.\\
+\textbf{Formal analysis:} Atherv Telkar, Amey Telkar.\\
+\textbf{Investigation:} Atherv Telkar, Amey Telkar, Akshay Javalgikar, Nitin Madanwale.\\
+\textbf{Methodology:} Atherv Telkar, Amey Telkar, Preethi Baligar.\\
+\textbf{Software:} Atherv Telkar, Amey Telkar.\\
+\textbf{Supervision:} Preethi Baligar, Darshan Ruikar.\\
+\textbf{Validation:} Akshay Javalgikar, Nitin Madanwale.\\
+\textbf{Writing - original draft:} Atherv Telkar, Amey Telkar.\\
+\textbf{Writing - review \& editing:} Akshay Javalgikar, Nitin Madanwale, Darshan Ruikar, Preethi Baligar.\\
+All authors read and approved the final manuscript.
+
+
+%% ---- REFERENCES ----
+\begingroup
+\singlespacing\footnotesize
+\begin{thebibliography}{99}
+
+\bibitem{cdc2023obesity}
+Centers for Disease Control and Prevention.
+Prevalence of childhood obesity in the United States.
+\url{https://www.cdc.gov/obesity/php/data-research/childhood-obesity-facts.html}.
+Accessed May 2026.
+
+\bibitem{mayer2017}
+Mayer-Davis EJ, Lawrence JM, Dabelea D, Divers J, Isom S, Dolan L, et al.
+Incidence trends of type 1 and type 2 diabetes among youths, 2002-2012.
+N Engl J Med. 2017;376(15):1419-1429.
+https://doi.org/10.1056/NEJMoa1610187
+
+\bibitem{ispad2024}
+Cengiz E, Danne T, Ahmad T, Ayyavoo A, Beran D, Codner E, et al.
+International Society for Pediatric and Adolescent Diabetes Clinical Practice Consensus Guidelines 2024: Insulin and Adjunctive Treatments in Children and Adolescents with Diabetes.
+Horm Res Paediatr. 2025;97(6):584-614.
+https://doi.org/10.1159/000543169
+
+\bibitem{fda_semaglutide}
+U.S. Food and Drug Administration.
+FDA approves weight management drug for patients aged 12 and older. December 2020.
+\url{https://www.fda.gov/news-events/press-announcements/fda-approves-weight-management-drug-patients-aged-12-and-older}
+
+\bibitem{fda_liraglutide}
+Kelly AS, Auerbach P, Barrientos-Perez M, Gies I, Hale PM, Marcus C, et al.
+A randomized, controlled trial of liraglutide for adolescents with obesity.
+N Engl J Med. 2020;382(22):2117-2128.
+https://doi.org/10.1056/NEJMoa1916038
+
+\bibitem{misu2023}
+Phan M, Cheng C, Dang V, Wu E, Mu\~{n}oz MA.
+Characterization of Pediatric Reports in the US FDA Adverse Event Reporting System from 2010-2020.
+Ther Innov Regul Sci. 2023;57(5):1062-1073.
+https://doi.org/10.1007/s43441-023-00542-0
+
+\bibitem{kearns2003}
+Kearns GL, Abdel-Rahman SM, Alander SW, Blowey DL, Leeder JS, Kauffman RE.
+Developmental pharmacology: drug disposition, action, and therapy in infants and children.
+N Engl J Med. 2003;349(12):1157-1167.
+https://doi.org/10.1056/NEJMra035092
+
+\bibitem{glp1_gi}
+Wilding JP, Batterham RL, Calanna S, Davies M, Van Gaal LF, Lingvay I, et al.
+Once-weekly semaglutide in adults with overweight or obesity.
+N Engl J Med. 2021;384(11):989-1002.
+https://doi.org/10.1056/NEJMoa2032183
+
+\bibitem{metformin_lactic}
+DeFronzo R, Fleming GA, Chen K, Bicsak TA.
+Metformin-associated lactic acidosis: current perspectives on causes and risk.
+Metabolism. 2016;65(2):20-29.
+https://doi.org/10.1016/j.metabol.2015.10.014
+
+\bibitem{glp1_psych}
+Wang W, Volkow ND, Berger NA, Davis PB, Kaelber DC, Xu R.
+Association of semaglutide with risk of suicidal ideation in a real-world cohort.
+Nat Med. 2024;30(1):168-176.
+https://doi.org/10.1038/s41591-023-02672-2
+
+\bibitem{faers_overview}
+Sakaeda T, Tamon A, Kadoyama K, Okuno Y.
+Data mining of the public version of the FDA Adverse Event Reporting System.
+Int J Med Sci. 2013;10(7):796-803.
+https://doi.org/10.7150/ijms.6048
+
+\bibitem{van_puijenbroek}
+van Puijenbroek EP, Bate A, Leufkens HGM, Lindquist M, Orre R, Egberts ACG.
+A comparison of measures of disproportionality.
+Pharmacoepidemiol Drug Saf. 2002;11(1):3-10.
+https://doi.org/10.1002/pds.668
+
+\bibitem{ped_antidep}
+Zhou Y, Lu Y, Wu Y, Kong W, Zhou L, Guo X, et al.
+Safety of antidepressants commonly used in 6-17-year-old children and adolescents: A disproportionality analysis from 2014-2023 on the basis of the FAERS database.
+PLoS One. 2025;20(8):e0330025.
+https://doi.org/10.1371/journal.pone.0330025
+
+\bibitem{ards_faers}
+Lai JH, Pan YP, Yu ZH, Jang WF, Hu JT, Tang ZH.
+Mining and analysis of reported ARDS population in FAERS database.
+PLoS One. 2025;20(11):e0334500.
+https://doi.org/10.1371/journal.pone.0334500
+
+\bibitem{resp_psych}
+Feng J, Zhao S.
+Respiratory drugs and psychiatric adverse events in children and adolescents: a pharmacovigilance study based on the FAERS.
+Naunyn Schmiedebergs Arch Pharmacol. 2026;399(7):10535-10547.
+https://doi.org/10.1007/s00210-026-05075-5
+
+\bibitem{tnf_ped}
+Yang Y, Wang P, Li QX. Safety profile of TNF-$\alpha$ inhibitors in pediatric patients: A post-marketing surveillance study based on the FAERS database. PLoS One. 2025;20(12):e0328465.
+https://doi.org/10.1371/journal.pone.0328465
+
+\bibitem{qin2026cvd}
+Qin N, Gan Y, Ouyang J, Qin J, Tang Y, Wu H, et al. Identification of drug-related cardiovascular risks: A comprehensive analysis using the FAERS database (2004-2024). PLoS One. 2026;21(6):e0349218. https://doi.org/10.1371/journal.pone.0349218
+
+\bibitem{readus}
+Fusaroli M, Salvo F, Begaud B, AlShammari TM, Bate A, Battini V, et al.
+The Reporting of a Disproportionality Analysis for Drug Safety Signal Detection Using Individual Case Safety Reports in PharmacoVigilance (READUS-PV): development and statement.
+Drug Saf. 2024;47(6):575-584.
+https://doi.org/10.1007/s40264-024-01421-9
+
+\bibitem{strobe}
+von Elm E, Altman DG, Egger M, Pocock SJ, G{\o}tzsche PC, Vandenbroucke JP.
+The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) statement: guidelines for reporting observational studies.
+Lancet. 2007;370(9596):1453-1457.
+https://doi.org/10.1016/S0140-6736(07)61602-X
+
+\bibitem{tripodai}
+Collins GS, Moons KGM, Dhiman P, Riley RD, Beam AL, Van Calster B, et al.
+TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods.
+BMJ. 2024;385:e078378.
+https://doi.org/10.1136/bmj-2023-078378
+
+\bibitem{faers_data}
+U.S. Food and Drug Administration.
+FAERS Public Dashboard.
+\url{https://fis.fda.gov/extensions/FPD-QDE-FAERS/FPD-QDE-FAERS.html}.
+Accessed June 2026.
+
+\bibitem{meddra}
+International Council for Harmonisation (ICH).
+Medical Dictionary for Regulatory Activities (MedDRA), Version 28.1. ICH; 2025.
+\url{https://www.meddra.org}
+
+\bibitem{rothman2004}
+Rothman KJ, Lanes S, Sacks ST.
+The reporting odds ratio and its advantages over the proportional reporting ratio.
+Pharmacoepidemiol Drug Saf. 2004;13(8):519-523.
+https://doi.org/10.1002/pds.1001
+
+\bibitem{evans2001}
+Evans SJW, Waller PC, Davis S.
+Use of proportional reporting ratios for signal generation from spontaneous adverse drug reaction reports.
+Pharmacoepidemiol Drug Saf. 2001;10(6):483-486.
+https://doi.org/10.1002/pds.677
+
+\bibitem{bate1998}
+Bate A, Lindquist M, Edwards IR, Olsson S, Orre R, Lansner A, et al.
+A Bayesian neural network method for adverse drug reaction signal generation.
+Eur J Clin Pharmacol. 1998;54(4):315-321.
+https://doi.org/10.1007/s002280050466
+
+\bibitem{dumouchel1999}
+DuMouchel W.
+Bayesian data mining in large frequency tables, with application to the FDA spontaneous reporting system.
+Am Stat. 1999;53(3):177-190.
+https://doi.org/10.1080/00031305.1999.10474456
+
+\bibitem{chen2016xgboost}
+Chen T, Guestrin C.
+XGBoost: A Scalable Tree Boosting System.
+Proc 22nd ACM SIGKDD Int Conf Knowl Discov Data Min. 2016:785-794.
+https://doi.org/10.1145/2939672.2939785
+
+\bibitem{efron1993}
+Efron B, Tibshirani RJ.
+An Introduction to the Bootstrap. New York: Chapman \& Hall; 1993.
+https://doi.org/10.1007/978-1-4899-4541-9
+
+\bibitem{statin_myopathy}
+Stroes ES, Thompson PD, Corsini A, Vladutiu GD, Raal FJ, Ray KK, et al.
+Statin-associated muscle symptoms: impact on statin therapy, European Atherosclerosis Society Consensus Panel Statement.
+Eur Heart J. 2015;36(17):1012-1022.
+https://doi.org/10.1093/eurheartj/ehv043
+
+\bibitem{glp1_gi_mech}
+Friedrichsen MH, Breitschaft A, Tadayon S, Biber A, Carlsson Petri KC.
+The effect of semaglutide 2.4\,mg once weekly on energy intake, appetite, control of eating, and gastric emptying in adults with obesity.
+Diabetes Obes Metab. 2021;23(3):754-762.
+https://doi.org/10.1111/dom.14280
+
+\bibitem{glp1_adolescent}
+Weghuber D, Barrett T, Barrientos-P\'{e}rez M, Gies I, Hesse D, Jeppesen OK, et al.
+Once-weekly semaglutide in adolescents with obesity.
+N Engl J Med. 2022;387(24):2245-2257.
+https://doi.org/10.1056/NEJMoa2208601
+
+\bibitem{who_signal}
+Uppsala Monitoring Centre.
+The use of the WHO-UMC system for standardised case causality assessment.
+\url{https://www.who-umc.org/}
+
+\bibitem{metformin_adolescent}
+Peng M, Shen P, Joung K-I, Kim KJ.
+Safety profile of metformin in adolescents with type 2 diabetes: A pharmacovigilance analysis of the FDA Adverse Event Reporting System.
+PLoS One. 2025;20(11):e0337204.
+https://doi.org/10.1371/journal.pone.0337204
+
+\bibitem{faers_missing}
+Moore TJ, Cohen MR, Furberg CD.
+Serious adverse drug events reported to the Food and Drug Administration, 1998-2005.
+Arch Intern Med. 2007;167(16):1752-1759.
+https://doi.org/10.1001/archinte.167.16.1752
+
+\bibitem{hathaway2024}
+Hathaway JT, Shah MP, Hathaway DB, Zekavat SM, Krasniqi D, Gittinger JW, et al.
+Risk of Nonarteritic Anterior Ischemic Optic Neuropathy in Patients Prescribed Semaglutide.
+JAMA Ophthalmol. 2024;142(8):732-739.
+https://doi.org/10.1001/jamaophthalmol.2024.2296
+
+\bibitem{cai2025naion}
+Cai CX, Hribar M, Baxter S, Goetz K, Swaminathan SS, Flowers A, et al. Semaglutide and nonarteritic anterior ischemic optic neuropathy. JAMA Ophthalmol. 2025;143(4):304-314. https://doi.org/10.1001/jamaophthalmol.2024.6555
+
+\bibitem{abdelaal2026naion}
+Abdelaal A, Abu Serhan H, Alsaadi M, Yaldo L, Gaier ED, Elhusseiny AM. Semaglutide and the risk of nonarteritic ischemic optic neuropathy: a systematic review and certainty of evidence meta-analysis. Ophthalmology. 2026;133(6):799-810. https://doi.org/10.1016/j.ophtha.2026.02.013
+
+\bibitem{signal_multi}
+Montastruc JL, Sommet A, Bagheri H, Lapeyre-Mestre M.
+Benefits and strengths of the disproportionality analysis for identification of adverse drug reactions in a pharmacovigilance database.
+Br J Clin Pharmacol. 2011;72(6):905-908.
+https://doi.org/10.1111/j.1365-2125.2011.04037.x
+
+\bibitem{finlayson2021}
+Finlayson SG, Subbaswamy A, Singh K, Bowers J, Kupke A, Zittrain J, et al.
+The Clinician and Dataset Shift in Artificial Intelligence.
+N Engl J Med. 2021;385(3):283-286.
+https://doi.org/10.1056/NEJMc2104626
+
+\bibitem{lee2024glp1}
+Lee JM, Sharifi M, Oshman L, Griauzde DH, Chua KP.
+Dispensing of Glucagon-Like Peptide-1 Receptor Agonists to Adolescents and Young Adults, 2020-2023.
+JAMA. 2024;331(23):2041-2043.
+https://doi.org/10.1001/jama.2024.7112
+\end{thebibliography}
+\endgroup
+
+
+%% ---- ELECTRONIC SUPPLEMENTARY MATERIAL ----
+\section*{Electronic Supplementary Material}
+
+\paragraph*{Online Resource 1.}\label{s1tab} STROBE checklist for observational studies.\\
+(PDF)
+
+\paragraph*{Online Resource 2.}\label{s2tab} TRIPOD+AI checklist for prediction model development and validation.\\
+(PDF)
+
+\paragraph*{Online Resource 3.}\label{s3tab} READUS-PV checklist for disproportionality analysis reporting.\\
+(PDF)
+
+\paragraph*{Online Resource 4.}\label{s4tab} Complete preprocessing pipeline specification, including data download, deduplication, age filtering, drug normalisation, and MedDRA coding procedures.\\
+(PDF)
+
+\paragraph*{Online Resource 5.}\label{s5tab} Full hyperparameter search space and optimal configurations for XGBoost, logistic regression, decision tree, and random forest models.\\
+(PDF)
+
+\paragraph*{Online Resource 6.}\label{s6tab} Predictor specification and data-leakage audit. Lists all candidate features with their data types, source tables, leakage risk assessment, and inclusion/exclusion decisions.\\
+(PDF)
+
+\paragraph*{Online Resource 7.}\label{s7tab} Temporal dataset shift analysis across training (2021Q1-2023Q4), validation (2024), and test (2025) periods, showing demographic stability, outcome missingness trends, and model performance degradation.\\
+(PDF)
+
+\paragraph*{Online Resource 8.}\label{s8tab} Complete signal detection results for all 1,791 drug-event pairs with $N \geq 2$ from the combined obesity and diabetes panels, including the 2$\times$2 cell counts and, for every pair, the ROR with its 95\% confidence interval, the PRR and $\chi^2$, the IC and IC$_{025}$, and the EBGM and EB05. The Signal column flags the 360 pairs that meet the pre-specified ROR criteria ($N \geq 3$ and 95\% CI lower bound $> 1$), and a separate column flags the 231 pairs (broad obesity panel) that are concordant across all four metrics; pairs supported by only two reports are retained for transparency but are not counted as signals. For 13 pairs the displayed ROR confidence bound rounds to 1.00 at two decimal places while the full-precision value exceeds 1; these are flagged in the workbook with a rounding note and a four-decimal column, and the criterion is met.\\
+(XLSX)
+
+\paragraph*{Online Resource 9.}\label{s9tab} Quarter-wise FAERS reporting volume for the adolescent cohort (12-17 years) from 2021 to 2025 across all four drug-exposure panels.\\
+(PDF)
+
+\paragraph*{Online Resource 10.}\label{s1fig} Detailed case-selection flow diagram showing FAERS report counts from raw acquisition through deduplication, age filtering, drug-panel filtering to final analytical cohorts.\\
+(PDF)
+
+\paragraph*{Online Resource 11.}\label{s2fig} Global SHAP feature importance (mean absolute SHAP value across all outcome classes) for the chronological XGBoost model.\\
+(PDF)
+
+
+\end{document}
