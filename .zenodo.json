@@ -1,0 +1,49 @@
+{
+  "title": "Adolescent cardiometabolic drug safety in FAERS (2021-2025): analysis code, derived datasets and signal-detection outputs",
+  "upload_type": "software",
+  "version": "19",
+  "description": "Code, derived de-identified analytic datasets, complete signal-detection output and supplementary files for the manuscript 'Adverse drug reaction signals for GLP-1 receptor agonists, SGLT2 inhibitors, insulins, and cardiometabolic agents in adolescents with obesity and type 2 diabetes: a four-metric disproportionality analysis of the FDA Adverse Event Reporting System (2021-2025)'. Raw FAERS files and the MedDRA dictionary are not included.",
+  "creators": [
+    {
+      "name": "Telkar, Atherv",
+      "affiliation": "School of Computing, Maharashtra Institute of Technology (MIT) Vishwaprayag University, Solapur, India"
+    },
+    {
+      "name": "Telkar, Amey",
+      "affiliation": "School of Computing, Maharashtra Institute of Technology (MIT) Vishwaprayag University, Solapur, India"
+    },
+    {
+      "name": "Javalgikar, Akshay",
+      "affiliation": "School of Pharmacy, Maharashtra Institute of Technology (MIT) Vishwaprayag University, Solapur, India"
+    },
+    {
+      "name": "Madanwale, Nitin",
+      "affiliation": "School of Pharmacy, Maharashtra Institute of Technology (MIT) Vishwaprayag University, Solapur, India"
+    },
+    {
+      "name": "Ruikar, Darshan",
+      "affiliation": "School of Computing, Maharashtra Institute of Technology (MIT) Vishwaprayag University, Solapur, India"
+    },
+    {
+      "name": "Baligar, Preethi",
+      "affiliation": "School of Computing, Maharashtra Institute of Technology (MIT) Vishwaprayag University, Solapur, India"
+    }
+  ],
+  "keywords": [
+    "pharmacovigilance",
+    "FAERS",
+    "adolescents",
+    "disproportionality analysis",
+    "machine learning",
+    "signal detection"
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/AthervTelkar2498/adolescent-faers-adr-glp1-sglt2-insulin-disproportionality",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}

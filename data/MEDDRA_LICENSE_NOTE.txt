@@ -1,0 +1,18 @@
+MedDRA License Note
+====================
+
+This project uses MedDRA (Medical Dictionary for Regulatory Activities) version 28.1
+for adverse event terminology classification and standardization.
+
+IMPORTANT:
+- MedDRA is proprietary, copyrighted material owned by the International Council
+  for Harmonisation of Technical Requirements for Pharmaceuticals for Human Use (ICH).
+- The proprietary MedDRA dictionary files are NOT redistributed in this package.
+- The analysis was performed under the applicable MedDRA license terms.
+- The required terminology and version information (MedDRA v28.1, English) is
+  documented in the manuscript and project records.
+
+For access to MedDRA, please visit: https://www.meddra.org/
+
+Reference:
+MedDRA version 28.1 (English), ICH, 2024.

@@ -1,0 +1,18 @@
+# MedDRA is licensed: never commit any part of the dictionary
+*MedDRA*/
+*MEDDRA*/
+!data/MEDDRA_LICENSE_NOTE.txt
+*MEDRA*/
+MedAscii/
+SeqAscii/
+*.asc
+*.seq
+# raw FAERS extracts and fitted models
+faers_raw/
+*.pkl
+*.joblib
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/

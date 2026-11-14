@@ -1,0 +1,24 @@
+{
+  "T1_age_no_single_dominates_25pct": {
+    "passed": true,
+    "max_pct": 18.44,
+    "at_age": 16.0
+  },
+  "T2_age_in_range": {
+    "passed": true,
+    "out_of_range": 0
+  },
+  "T3_no_duplicate_triples": {
+    "passed": true,
+    "duplicates": 0
+  },
+  "T4_2x2_sums_correct": {
+    "passed": true,
+    "expected": 122552,
+    "distinct_sums": 1
+  },
+  "T5_signal_N_ge_3": {
+    "passed": true,
+    "min_N": 3
+  }
+}

@@ -1,0 +1,3 @@
+panel,N,age_mean,age_sd,female_pct,PS_pct,SS_pct,C_pct,outc_DE,outc_LT,outc_HO,outc_DS,outc_CA,outc_RI,outc_OT
+Broad Obesity,994,14.8,1.68,55.8,46.3,44.8,8.8,60,81,458,8,1,0,468
+Broad Diabetes,719,14.57,1.75,52.4,48.7,40.5,10.8,16,49,294,7,1,0,304

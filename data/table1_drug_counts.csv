@@ -1,0 +1,33 @@
+panel,drug,cases_PS_SS,cases_all_roles
+Broad Obesity,METFORMIN,0,0
+Broad Obesity,ATORVASTATIN,39,89
+Broad Obesity,LISINOPRIL,141,641
+Broad Obesity,LOSARTAN,36,101
+Broad Obesity,SEMAGLUTIDE,105,123
+Broad Obesity,LIRAGLUTIDE,56,66
+Broad Obesity,TIRZEPATIDE,29,32
+Broad Obesity,DAPAGLIFLOZIN,16,30
+Broad Obesity,EMPAGLIFLOZIN,22,23
+Broad Obesity,ORLISTAT,1,4
+Broad Obesity,INSULIN GLARGINE,212,381
+Broad Obesity,INSULIN LISPRO,268,390
+Broad Obesity,INSULIN ASPART,174,275
+Broad Obesity,INSULIN DEGLUDEC,49,102
+Broad Diabetes,METFORMIN,0,0
+Broad Diabetes,INSULIN GLARGINE,212,381
+Broad Diabetes,INSULIN LISPRO,268,390
+Broad Diabetes,INSULIN ASPART,174,275
+Broad Diabetes,INSULIN DEGLUDEC,49,102
+Broad Diabetes,SEMAGLUTIDE,105,123
+Broad Diabetes,DAPAGLIFLOZIN,16,30
+Broad Diabetes,EMPAGLIFLOZIN,22,23
+Broad Diabetes,SITAGLIPTIN,2,4
+Broad Diabetes,PIOGLITAZONE,6,12
+Selected Obesity,SEMAGLUTIDE,105,123
+Selected Obesity,LIRAGLUTIDE,56,66
+Selected Obesity,TIRZEPATIDE,29,32
+Selected Obesity,ORLISTAT,1,4
+Selected Diabetes,SEMAGLUTIDE,105,123
+Selected Diabetes,DAPAGLIFLOZIN,16,30
+Selected Diabetes,EMPAGLIFLOZIN,22,23
+Selected Diabetes,SITAGLIPTIN,2,4

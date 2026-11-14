@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the archive below."
+title: "Adolescent cardiometabolic drug safety in FAERS (2021-2025): analysis code, derived datasets and signal-detection outputs"
+type: software
+version: "19"
+date-released: "2026-11-12"
+doi: 10.5281/zenodo.22767355
+repository-code: "https://github.com/AthervTelkar2498/adolescent-faers-adr-glp1-sglt2-insulin-disproportionality"
+license: MIT
+authors:
+  - family-names: Telkar
+    given-names: Atherv
+    affiliation: "School of Computing, MIT Vishwaprayag University, Solapur, India"
+  - family-names: Telkar
+    given-names: Amey
+    affiliation: "School of Computing, MIT Vishwaprayag University, Solapur, India"
+  - family-names: Javalgikar
+    given-names: Akshay
+    affiliation: "School of Pharmacy, MIT Vishwaprayag University, Solapur, India"
+  - family-names: Madanwale
+    given-names: Nitin
+    affiliation: "School of Pharmacy, MIT Vishwaprayag University, Solapur, India"
+  - family-names: Ruikar
+    given-names: Darshan
+    affiliation: "School of Computing, MIT Vishwaprayag University, Solapur, India"
+  - family-names: Baligar
+    given-names: Preethi
+    affiliation: "School of Computing, MIT Vishwaprayag University, Solapur, India"
+keywords: [pharmacovigilance, FAERS, adolescents, disproportionality analysis, machine learning]

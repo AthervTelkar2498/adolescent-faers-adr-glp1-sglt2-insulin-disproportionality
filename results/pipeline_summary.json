@@ -1,0 +1,223 @@
+{
+  "cohort": {
+    "total_raw_demo_rows": 8598529,
+    "deduplicated_cases": 7349591,
+    "dropped_missing_age": 3189002,
+    "adolescent_cases": 122552,
+    "age_mean": 14.69,
+    "age_sd": 1.67,
+    "age_median": 15.0,
+    "female_pct": 48.0,
+    "male_pct": 48.5
+  },
+  "signals": {
+    "Broad Obesity": {
+      "pairs_N_ge3": 309,
+      "ror_signals": 231,
+      "four_metric_signals": 231,
+      "top5_signals": [
+        {
+          "drug": "LOSARTAN",
+          "event": "Stiff skin syndrome",
+          "N": 3,
+          "ROR": 11137.7273,
+          "ROR_lower": 1129.2396,
+          "ROR_upper": 109851.7736,
+          "four_metric": true
+        },
+        {
+          "drug": "DAPAGLIFLOZIN",
+          "event": "Cardiac contractility decreased",
+          "N": 3,
+          "ROR": 9425.6154,
+          "ROR_lower": 1738.9499,
+          "ROR_upper": 51089.5837,
+          "four_metric": true
+        },
+        {
+          "drug": "ATORVASTATIN",
+          "event": "Photodermatosis",
+          "N": 7,
+          "ROR": 4610.5161,
+          "ROR_lower": 1465.899,
+          "ROR_upper": 14500.903,
+          "four_metric": true
+        },
+        {
+          "drug": "EMPAGLIFLOZIN",
+          "event": "Anion gap",
+          "N": 7,
+          "ROR": 4083.8667,
+          "ROR_lower": 1445.0332,
+          "ROR_upper": 11541.5803,
+          "four_metric": true
+        },
+        {
+          "drug": "DAPAGLIFLOZIN",
+          "event": "N-terminal prohormone brain natriuretic peptide increased",
+          "N": 3,
+          "ROR": 4039.4176,
+          "ROR_lower": 940.2649,
+          "ROR_upper": 17353.5087,
+          "four_metric": true
+        }
+      ]
+    },
+    "Broad Diabetes": {
+      "pairs_N_ge3": 217,
+      "ror_signals": 151,
+      "four_metric_signals": 151,
+      "top5_signals": [
+        {
+          "drug": "DAPAGLIFLOZIN",
+          "event": "Cardiac contractility decreased",
+          "N": 3,
+          "ROR": 9425.6154,
+          "ROR_lower": 1738.9499,
+          "ROR_upper": 51089.5837,
+          "four_metric": true
+        },
+        {
+          "drug": "EMPAGLIFLOZIN",
+          "event": "Anion gap",
+          "N": 7,
+          "ROR": 4083.8667,
+          "ROR_lower": 1445.0332,
+          "ROR_upper": 11541.5803,
+          "four_metric": true
+        },
+        {
+          "drug": "DAPAGLIFLOZIN",
+          "event": "N-terminal prohormone brain natriuretic peptide increased",
+          "N": 3,
+          "ROR": 4039.4176,
+          "ROR_lower": 940.2649,
+          "ROR_upper": 17353.5087,
+          "four_metric": true
+        },
+        {
+          "drug": "SEMAGLUTIDE",
+          "event": "Obstructive pancreatitis",
+          "N": 3,
+          "ROR": 3601.3529,
+          "ROR_lower": 371.4965,
+          "ROR_upper": 34912.1515,
+          "four_metric": true
+        },
+        {
+          "drug": "INSULIN DEGLUDEC",
+          "event": "Adhesion",
+          "N": 4,
+          "ROR": 2722.2,
+          "ROR_lower": 660.3643,
+          "ROR_upper": 11221.6434,
+          "four_metric": true
+        }
+      ]
+    },
+    "Selected Obesity": {
+      "pairs_N_ge3": 40,
+      "ror_signals": 29,
+      "four_metric_signals": 29,
+      "top5_signals": [
+        {
+          "drug": "SEMAGLUTIDE",
+          "event": "Obstructive pancreatitis",
+          "N": 3,
+          "ROR": 3601.3529,
+          "ROR_lower": 371.4965,
+          "ROR_upper": 34912.1515,
+          "four_metric": true
+        },
+        {
+          "drug": "SEMAGLUTIDE",
+          "event": "Weight loss poor",
+          "N": 4,
+          "ROR": 692.7298,
+          "ROR_lower": 199.6864,
+          "ROR_upper": 2403.1411,
+          "four_metric": true
+        },
+        {
+          "drug": "LIRAGLUTIDE",
+          "event": "Cholelithiasis",
+          "N": 4,
+          "ROR": 90.5266,
+          "ROR_lower": 32.1571,
+          "ROR_upper": 254.8448,
+          "four_metric": true
+        },
+        {
+          "drug": "TIRZEPATIDE",
+          "event": "Hypoglycaemia",
+          "N": 3,
+          "ROR": 59.7883,
+          "ROR_lower": 17.9735,
+          "ROR_upper": 198.8844,
+          "four_metric": true
+        },
+        {
+          "drug": "SEMAGLUTIDE",
+          "event": "Blood glucose decreased",
+          "N": 3,
+          "ROR": 59.0096,
+          "ROR_lower": 18.2188,
+          "ROR_upper": 191.1288,
+          "four_metric": true
+        }
+      ]
+    },
+    "Selected Diabetes": {
+      "pairs_N_ge3": 37,
+      "ror_signals": 27,
+      "four_metric_signals": 27,
+      "top5_signals": [
+        {
+          "drug": "DAPAGLIFLOZIN",
+          "event": "Cardiac contractility decreased",
+          "N": 3,
+          "ROR": 9425.6154,
+          "ROR_lower": 1738.9499,
+          "ROR_upper": 51089.5837,
+          "four_metric": true
+        },
+        {
+          "drug": "EMPAGLIFLOZIN",
+          "event": "Anion gap",
+          "N": 7,
+          "ROR": 4083.8667,
+          "ROR_lower": 1445.0332,
+          "ROR_upper": 11541.5803,
+          "four_metric": true
+        },
+        {
+          "drug": "DAPAGLIFLOZIN",
+          "event": "N-terminal prohormone brain natriuretic peptide increased",
+          "N": 3,
+          "ROR": 4039.4176,
+          "ROR_lower": 940.2649,
+          "ROR_upper": 17353.5087,
+          "four_metric": true
+        },
+        {
+          "drug": "SEMAGLUTIDE",
+          "event": "Obstructive pancreatitis",
+          "N": 3,
+          "ROR": 3601.3529,
+          "ROR_lower": 371.4965,
+          "ROR_upper": 34912.1515,
+          "four_metric": true
+        },
+        {
+          "drug": "SEMAGLUTIDE",
+          "event": "Weight loss poor",
+          "N": 4,
+          "ROR": 692.7298,
+          "ROR_lower": 199.6864,
+          "ROR_upper": 2403.1411,
+          "four_metric": true
+        }
+      ]
+    }
+  }
+}

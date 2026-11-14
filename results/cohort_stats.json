@@ -1,0 +1,11 @@
+{
+  "total_raw_demo_rows": 8598529,
+  "deduplicated_cases": 7349591,
+  "dropped_missing_age": 3189002,
+  "adolescent_cases": 122552,
+  "age_mean": 14.69,
+  "age_sd": 1.67,
+  "age_median": 15.0,
+  "female_pct": 48.0,
+  "male_pct": 48.5
+}
